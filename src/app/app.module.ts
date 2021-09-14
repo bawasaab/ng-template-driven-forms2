@@ -6,11 +6,13 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
+import { NgReactiveFormsComponent } from './ng-reactive-forms/ng-reactive-forms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateDrivenFormComponent
+    TemplateDrivenFormComponent,
+    NgReactiveFormsComponent
   ],
   imports: [
     BrowserModule,
