@@ -11,6 +11,7 @@ import { PasswordMatchValidator } from "./passwordMatch.validator";
 export class NgReactiveFormsComponent implements OnInit {
 
   form: FormGroup;
+  isSubmitted = false;
   
   constructor(
     formbuilder: FormBuilder
@@ -21,11 +22,15 @@ export class NgReactiveFormsComponent implements OnInit {
       newPassword: [
         '', 
         Validators.required,
+        PasswordMatchValidator.passwordsShouldMatch
       ],
-      confirmPassword: ['', Validators.required]
-    }, {
-      newPassword: PasswordMatchValidator.passwordsShouldMatch
-    })
+      confirmPassword: [
+        '', 
+        Validators.required,
+        PasswordMatchValidator.passwordsShouldMatch
+      ]
+    }
+    )
   }
 
   // convenience getter for easy access to form fields
@@ -38,6 +43,7 @@ export class NgReactiveFormsComponent implements OnInit {
   }
 
   handleSubmit() {
+    this.isSubmitted = true;
     console.log('this.frmValues', this.frmValues);
     console.log( 'this.f', this.f );
   }

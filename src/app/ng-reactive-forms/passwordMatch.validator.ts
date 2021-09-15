@@ -4,13 +4,10 @@ export class PasswordMatchValidator {
     static passwordsShouldMatch( controls: AbstractControl ) : Promise<ValidationErrors | null> {
 
         return new Promise( (resolve, reject) => {
-
-            let newPassword = controls.get('newPassword');
-            let confirmPassword = controls.get('confirmPassword');
-    
-    
-            console.log('passwordsShouldMatch newPassword', newPassword?.value);
-            console.log('passwordsShouldMatch confirmPassword', confirmPassword?.value);
+            
+            let data = controls?.parent?.value;
+            let newPassword = data.newPassword;
+            let confirmPassword = controls.value;
     
             if( newPassword !== confirmPassword ) {
                 resolve({ passwordsShouldMatch: true });
